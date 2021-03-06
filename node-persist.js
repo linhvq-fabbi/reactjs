@@ -1,52 +1,66 @@
 // Load module node-persist
 var storage = require('node-persist');
 
-// Hàm khởi tạo
-// Load dữ liệu đã lưu trên ổ đĩa
+// The function initialization
+// Load data has been saved in a disk
 storage.initSysc({
-    dir :"students" //cấu hình nơi lưu trữ dữ liệu nằm trong thư mục t
+    dir :"students" //Configure where the data is stored in the students directory
 });
 
-//Hàm lấy danh sách sinh viên
+//The function gets a list of students
 function getAllStudents()
 {
-    //Lấy sinh viên từ nơi lưu trữ
+    //Get students from storage
     var students = storage.getItemSync("students");
 
-    //Nếu không có sinh viên nào thì trả về một mảng rỗng
+    //If there aren't any students, return an empty array
     if (typeof students == "undefined"){
         return [];
     }
 
-    //Ngược lại trả về danh sách sinh viên
+    //Otherwise, the students list is returned
     return students;
 }
 
-//Hàm lấy tiết sinh viên
+//The function get detailed information about students
 function getStudent(studentId)
 {
+    // The function gets a list of students
+    var students = getAllStudents();
 
+    //Student storage variable found
+    var matchedStudent = null;
+
+    //Repeat to find students
+    for (var i = 0; i < students.lenght; i++){
+        if (students[i].id === studentId){
+            matchedStudent = students[i];
+            break;
+        }
+    }
+
+    return matchedStudent;
 }
 
-//Hàm thêm một sinh viên
+//The function adds a student
 function addStudent(id, fullname)
 {
-
+    
 }
 
-//Hàm xóa sinh viên
+//The function removes a student
 function editStudent(studentId, studentName)
 {
 
 }
 
-//Hàm sửa sinh viên
+//The function edit a student
 function editStudent(studentId, studentName)
 {
 
 }
 
-//Hàm hiển thị danh sách sinh viên
+//The function displays a list of students
 function showStudents()
 {
 
