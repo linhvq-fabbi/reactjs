@@ -93,11 +93,21 @@ function showStudents()
 }
 
 
-//Add new students
-// addStudent(1, 'Linh');
-// addStudent(2, 'Anh');
-// addStudent(3, 'Giang');
-// addStudent(4, 'Hoa');
+var yargs = require('yargs');
 
-//Show list students
-showStudents();
+var args = yargs
+                .command("list","Get list students", function(yargs){
+                    //Nothing
+                })
+                .command('create','Create a student', function(yargs){
+                    return yargs.option({
+                        id : {
+                            demand: true,
+                            type : "number"
+                        },
+                        fullname : {
+                            demand : true,
+                            type : "string"
+                        }
+                    });
+                })
